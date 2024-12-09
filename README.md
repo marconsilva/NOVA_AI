@@ -44,4 +44,4 @@ Welcome to the AI Class Repository. This repository contains all the materials f
 ## Assignments
 - 1.[Prolog Assignment](Assignments/Prolog%20Assignment%2024-25.pdf)
 - 2.[AI Challenge](http://aka.ms/nova-ai-challenge)
-- 3.Open AI Challenge (TBD)
+- 3.[Open AI Challenge](Assignments/LLM Challenge/llmchallenge.md)

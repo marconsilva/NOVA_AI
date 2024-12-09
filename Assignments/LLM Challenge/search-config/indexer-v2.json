@@ -1,0 +1,40 @@
+{
+    "name": "contoso-v2-indexer",
+    "description": null,
+    "dataSourceName": "contoso-v2-datasource",
+    "skillsetName": "contoso-skillset",
+    "targetIndexName": "contoso-v2",
+    "disabled": null,
+    "schedule": null,
+    "parameters": {
+      "batchSize": null,
+      "maxFailedItems": null,
+      "maxFailedItemsPerBatch": null,
+      "base64EncodeKeys": null,
+      "configuration": {
+        "dataToExtract": "contentAndMetadata",
+        "parsingMode": "delimitedText",
+        "delimitedTextDelimiter": ";",
+        "firstLineContainsHeaders": true
+      }
+    },
+    "fieldMappings": [
+      {
+        "sourceFieldName": "metadata_storage_name",
+        "targetFieldName": "title",
+        "mappingFunction": null
+      }
+    ],
+    "outputFieldMappings": [
+      {
+        "sourceFieldName": "/document/Content",
+        "targetFieldName": "chunk"
+      },
+      {
+        "sourceFieldName": "/document/vector",
+        "targetFieldName": "vector"
+      }
+    ],
+    "cache": null,
+    "encryptionKey": null
+  }

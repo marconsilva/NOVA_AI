@@ -1,0 +1,34 @@
+{
+    "name": "contoso-skillset",
+    "description": "Skillset to chunk documents and generate embeddings",
+    "skills": [
+      {
+        "@odata.type": "#Microsoft.Skills.Text.AzureOpenAIEmbeddingSkill",
+        "name": "#1",
+        "description": null,
+        "context": "/document",
+        "resourceUri": "https://aoai-hackathon-sweden.openai.azure.com/",
+        "apiKey": "<REDACTED>",
+        "deploymentId": "text-embedding-ada-002",
+        "dimensions": null,
+        "modelName": "text-embedding-ada-002",
+        "inputs": [
+          {
+            "name": "text",
+            "source": "/document/Content"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "embedding",
+            "targetName": "vector"
+          }
+        ],
+        "authIdentity": null
+      }
+    ],
+    "cognitiveServices": null,
+    "knowledgeStore": null,
+    "indexProjections": null,
+    "encryptionKey": null
+  }

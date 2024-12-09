@@ -1,0 +1,119 @@
+﻿Content
+"Fabio Silva (Cloud Architect)
+7:30 
+Rise and shine!
+Who needs and alarm when you have two little human alarm clocks? My daughters have a perfect sense of timing (except on weekends) and a unique way of pulling me into the day with their cheerful ""I'm huuungry!!"" symphony :)
+ 
+08:30
+The morning hustle is real! My wife starts her day early so in the morning I'm on my own with the two gremlins.
+Prepare breakfasts, backpacks and deal with increasingly complicated hair style requests are part of morning routine. The car ride to school is short and I'm usually back at 8:50 where my very old and blind dog ""Nikita"" is waiting for her walk at the park.
+ 
+9:00
+It's time to prepare the day. My calendar is blocked for 30 minutes to defend against unexpected meetings and last-minute calls. This is when I define and prioritize the tasks for the day. I take this time to check emails, Teams chats, JIRA/GitHub boards with my issues, and take a sneak peek at the latest blog posts and RSS feeds to keep up to date with what's new in the Azure Cloud world.
+
+10:00
+Let the meetings begin!!
+Teams and one-on-one meetings are very important to keep everyone in the loop and they usually happen at this time.
+ 
+11:00
+Time to tackle the to-do list and GitHub/JIRA issues. Most of the time this means opening VS Code and dive into Terraform code but handling Draw.io and Powerpoint are also part of the job description.
+ 
+13:00
+Lunch break. My cooking skills are inexistent, so this usually means heating some leftovers or order take out. The rest of the time I like to exercise a bit...by taking Nikita outside for another walk :)
+ 
+14:00
+Client meetings kick off. I put on my best ""trust me, I'm an architect"" face and guide them through the cloud. We dive into current progress, discussing milestones achieved and the roadmap ahead. The team presents the latest architecture diagrams and outline the next steps for our cloud project.
+ 
+17:00
+Hopefully the meetings are over by now. I sift through the notes to identify new issues or enhancements to be added to our backlog. While I'm at it I go through the list of pull requests to make some code reviews and check if my colleagues requested any changes on my PR's.
+ 
+18:30
+Wrapping up, I send the last emails of the day. My wife picked up the girls from school and arrived 30 min ago, and they are already kicking the door demanding attention. 
+ 
+19:00
+Family time! The end of day rollercoaster begins. With the days getting bigger I can take the girls to the park and play for a few minutes before dinner (I don't know where they get so much energy!!). Bath time is always an adventure, but it works like magic to get them in the mood to go to sleep... But not without a bedtime story!
+ 
+21:30
+I take Nikita to her last walk of the day. In these more relaxed moments, I often remember something that I missed to write or do during the day so when I'm back home I make sure to update my to-do list.
+Time to join my wife and watch some TV Series that she selected... But only I end up watching because she falls asleep after 5 minutes. "
+"Rodrigo Alcobaia (AWS Cloud Engineer / Architect)
+
+07:30
+Time to wake up! I have a hybrid alarm setup: there’s a wake-up sound (so peaceful like Morgan Freeman voice, swear) that starts gradually increasing volume at 7:20, and then there’s Caju, my dog. I try to snooze Caju once but without success, he always wins by insistence, get out of bed by 7:30 and it is time for the first walk.
+
+08:00
+Time for the first walk with Caju, is a dachshund, known as a ""sausage dog"". Given his energy and temperament, sometimes to excess, the neighbours call him the ""devil of Tasmania"", sometimes I fear the ""wurst"" but I prefer to say that he has a strong personality. But this is where the preparation for work begins, when I look at what I have planned to do during the day and my priorities.
+
+08:30
+Back home, it's time to have a good breakfast to start the day with energy, because as my grandmother used to say: ""those who aren't meant to eat, aren't meant to work"". During the breakfast, I like to listen to the latest news and just take time to ""real wake up"". Last stop before going to ""my office"" is the bathroom to take a shower, brush my teeth (hygiene matters!), and then we’re ready to get going by 9.00.
+
+09:00
+When I arrive at my office (~10 sec from bathroom distance), I start by reviewing my calendar, checking emails, Github board with my issues and catching up on any updates or messages from other team members and stakeholders. Also, I like to allocate time for research and continuous learning - staying up to date on new AWS features, products/services, and best practices. Remaining current with the latest trends and technologies helps those in this role to provide the best possible solutions to our clients.
+ 
+09:30
+Bearing in mind that today is Thursday, here at Contoso in the morning we have an allocated time between 9am and 12pm to study for a certification, focus on a solution to an issue (e.g. research, PoCs, design an architecture and/or implementation it by Terraform), or even prepare a demo to present tomorrow, Friday (the official day of the demos) where we share know-how with each other’s. Well, I've chosen to dedicate myself to studying, as I have planned an AWS Specialty Certification in a few months' time. Furthermore, I can study without any interruption as there are no meetings allowed during this period.
+
+12:00
+In order to take a break from studying, it's time to sync up with my colleagues and collaborate on addressing technical challenges. This involves reviewing implementation details, brainstorming ideas, and devising strategies to overcome any obstacles in the proper implementation of solutions for identified issues, whether they are internal or customer related. In my opinion, establishing open lines of communication with team members is crucial. By fostering an environment where ideas are welcomed and valued, we can collectively work towards a successful outcome for the project/issue at hand.
+
+13:00
+Lunchtime. Hot Dog? Nah, Caju he's not a big fan, reminds him of some relatives and we respect that. Depending on the weather, I might go for a quick walk with Caju to get some vitamin D or watch an episode of ""After Life"" with my future wife.
+As I'm in a wedding planning phase and I'm not very good at it (flower x, flower y, table centers, decoration, and more decoration... ahhh, do we need all of this? Really?) So, lately I've been spending more time on the sofa with her during lunch. Priorities... After lunch, it’s back to work.
+
+14:00
+Back to work, I check my Github board to see if there is a Pull Request (PR) from a colleague that needs my review/approval so that the necessary resources can be provisioned. After that, I take the opportunity to look at my to-do list and try to move forward with an issue with a higher priority (usually linked to the area of governance or network) and work on it.
+
+15:00
+Time to have a call with a customer to provide updates, gather feedback, and discuss any changes or issues with our implementation. Specifically, they've requested a solution to block access to a specific set of IPs and seek a consultative opinion regarding the integration of two AWS services. In our approach, we encounter varying levels of complexity in customer requirements. Some are straightforward and can be addressed promptly during the call. However, for more intricate demands, we engage in Proof of Concepts (PoCs) within our labs to thoroughly test the proposed solutions. Only upon successful validation in the PoCs do we present the finalized solution to the customer.
+
+17:00
+Time to dedicate to the presentation at Cloud Summit, an exclusive annual event, focused on sharing experiences and boosting interest in public cloud adoption and its impact on business transformation. In this role, knowledge sharing is integral, and it represents a valuable opportunity to learn from your peers. This year, me and one of my AWS partners are going to talk about how automation and governance together help us in the AWS account creation process.
+
+18:00
+Time to close the laptop and shake the skeleton. But not too hard, because it might break something given my physical condition. However, I try to keep active and once or twice a week I dedicate my evenings to exercise: football or padel tennis with friends. Today is padel day and for me the physical activity, social interaction, and focus required in the game its essential because help me distract from work, daily worries and promote relaxation. To be honest, it's my break point!
+
+20:00
+After coming home from the game, I do some stretching, have a quick snack, and take a shower. After the shower, my fiancé and I prepare dinner. Well, so we don't play hunger games, she makes the dinner and I do the rest. Balance above all :)
+
+22:00
+After dinner, time for the last walk with Caju, another moment to reflect on the day, which allows me to better organize my ideas, update my to-do list, and prepare for the next day in terms of tasks. Also time to relax after the walk and join my fiancé to watch some TV series or movie in some streaming platform... but normally we take so long to choose that one of us falls asleep, and we know it's time to go to sleep. If there's energy, possibly... forget it, I'll fall asleep too. Good night!"
+"Carlos Lourenço (Cloud Security Engineer)
+
+6:15
+I wake up with the alarm clock... Or with my Beagle doing that job to make sure I feed her first. Beagle owners will understand! My other dog stays on his bed, and well, because even I wanted to stay a little longer!
+ 
+6:30
+It's too early to practice any kind of sports, so I leave it for later (which usually doesn't happen). Instead, I prioritize more basic survival activities, such as eating something, taking a shower, and getting dressed.
+ 
+7:15
+Time to wake up the youngest in the house (miss Di) and get her ready for daycare.
+ 
+8:00
+It’s time to go to my man’s cave aka office, where I start reading emails to catch up. This world of Clouds is experiencing unusual growth, so every day there are new implementations, new discoveries and new cyberattacks, so I usually dedicate a few minutes a day to read blogs, RSS feeds and newsletters to keep up to date.
+ 
+8:30
+Let the games begin! If everything goes well, and no critical vulnerability is discovered, I can dedicate myself implementing something new, such as, for example, automation to free up our manual detection/remediation processes. But occasionally there are new vulnerabilities on the loose and, in that case, we must understand if we are affected looking to ours, and our client’s, infrastructure. Sometimes this is a quick process, sometimes it takes some time, but thanks to the power of the Cloud we can usually get a response quickly and even an immediate remediation.
+ 
+10:00
+It's time for meetings... yes, there are many meetings happening throughout the day, but team meetings are very important to keep us in sync, and usually they occur at this time.
+ 
+13:00
+Let’s take a break and eat something. Being at home, I must stick to the frying pan and stove... I'm not much as a cook (only at the barbecue) but I'm quite good at eating, so that’s a good balance...
+ 
+14:00
+Back at work, I go through GitHub to make some reviews, give/receive feedback on some of my implementations or my colleagues’ implementations. A lot of our work ends up being in Terraform for implementing infrastructure, and Python focusing on automation.
+ 
+16:00
+I probably had a few meetings here in between bu, on a good day, I have time to explore new features and create a few more ""issues"" for our ever-growing backlog.
+ 
+17:30
+Time to pick up the little one from daycare. I spend some time driving, so I take the opportunity to listen to some podcasts (Crying Out Cloud is one of my favorites). This is another way I use to try to keep up to date on Cloud and security topics.
+ 
+18:30
+Back home, it's time to play with Miss Di, and probably at this stage I like playing more than she does! Hopefully the weather is good, and the dogs can join us.
+ 
+19:00
+Time to feed, wash and bed for the youngest. A process that always involves some fun and takes some time.
+ 
+21:30
+If I still have battery, I’m going back to the PC with the excuse to study something, but I probably end up playing CS to discharge energy (yes, it requires a lot of effort). But, if my battery is depleted, I go straight to bed. I will probably try to watch some Netflix, but typically 2 min of tv shows will suffice, because I fall asleep easily."
