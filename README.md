@@ -42,6 +42,6 @@ Welcome to the AI Class Repository. This repository contains all the materials f
   - [nova_ai_class14_vind_demo001.ipynb](Class%20Exercices/Class%2014/nova_ai_class14_vind_demo001.ipynb)
 
 ## Assignments
-- 1.[Prolog Assignment](Assignments/Prolog%20Assignment%2024-25.pdf)
-- 2.[AI Challenge](http://aka.ms/nova-ai-challenge)
-- 3.[Open AI Challenge](Assignments/LLM Challenge/llmchallenge.md)
+- 1.[Prolog Assignment](Assignments/Prolog%20Assignment%2025-26.pdf)
+- 2.[Azure AI Assignment](Assignments/Azure%20AI%20Assignment%2025-26.pdf)
+- 3.[Azure LLMs Assignment](Assignments/Azure%20LLMs%20Assignment%2025-26.pdf)
