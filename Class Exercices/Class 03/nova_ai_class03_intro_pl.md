@@ -1,406 +1,281 @@
-# Hello World
-Run the SWI-Prolog interpreter and type the following command:
+#Arithmetic Operations & Functions
+In Prolog, we can use arithmetic operations and functions. Here are some examples:
+
 ```prolog
-write('Hello World').
+?- X is 7 + 3.
+X = 10
+yes
+
+?- X is 7 - 3.
+X = 4
+yes
+
+?- X is 7 * 3.
+X = 21
+yes
+
+?- X is 7 / 3.
+X = 2.3333333333333335
+yes
+
+?- X is 7 // 3.
+X = 2
+yes
+
+?- X is 7 mod 3.
+X = 1
+yes
+
+?- X is 7 rem 3.
+X = 1
+yes
+
+?- X is 7 ** 3.
+X = 343
+yes
 ```
 
-Note − After each line, you have to use one period (.) symbol to show that the line has ended.
 
-When you run the above program, you will get the following output:
+
+# Cut Operator
+Automatic backtracking is one of the most characteristic features of Prolog. But backtracking can lead to inefficiency. Sometimes Prolog can waste time exploring possibilities that lead nowhere. It would be pleasant to have some control over this aspect of its behaviour, but so far we have only seen two (rather crude) ways of doing this: changing rule order, and changing goal order. But there is another way. There is a built-in Prolog predicate ! (the exclamation mark), called cut, which offers a more direct way of exercising control over the way Prolog looks for solutions.
+
+What exactly is cut, and what does it do? It’s simply a special atom that we can use when writing clauses. For example:
+
 ```prolog
-Hello World
-true
+p(X):- b(X), c(X), !, d(X), e(X).
 ```
 
-Now let us see how to run the Prolog script file (extension is *.pl) into the Prolog console.
+This a perfectly good Prolog rule. As for what cut does, first of all, it is a goal that always succeeds. Second, and more importantly, it has a side effect. Suppose that some goal makes use of this clause (we call this goal the parent goal). Then the cut commits Prolog to any choices that were made since the parent goal was unified with the left hand side of the rule (including, importantly, the choice of using that particular clause). Let’s look at an example to see what this means.
 
-first create a file named helloworld.pl and write the following code:
-```prolog
-main :- write('This is sample Prolog program'),
-write(' This program is written into hello_world.pl file').
-```
-Before running *.pl file, we must change the directory to the location where the file is saved. To change the directory, use the following command:
-```prolog
-cd('C:/Users/your_directory_path').
-```
+First consider the following piece of cut-free code:
 
-Now you can run the Prolog script file using the following command:
 ```prolog
-consult('helloworld.pl').
+p(X):- a(X).
+
+p(X):- b(X), c(X), d(X), e(X).
+
+p(X):- f(X).
+
+a(1).  b(1).   c(1).   d(2).  e(2).  f(3).
+       b(2).   c(2).
 ```
 
-When you run the above command, you will get the following output:
+If we pose the query p(X) we will get the following responses:
+
 ```prolog
-true
+X = 1 ;
+
+X = 2 ;
+
+X = 3 ;
+no
 ```
 
-Finally you can run the following command to execute the script file:
+But now suppose we insert a cut in the second clause:
+
 ```prolog
-main.
+p(X):- b(X), c(X), !, d(X), e(X).
 ```
 
-When you run the above command, you will get the following output:
+if we now pose the query p(X) we will get the following responses:
+
 ```prolog
-This is sample Prolog program This program is written into hello_world.pl file
-true.
+X = 1 ;
+no
 ```
 
-# Basics - Facts, Rules, and Queries
-In Prolog, we can define facts, rules, and queries. Let us see how to define facts, rules, and queries in Prolog.
 
-## Facts
-Facts are the statements that provide some information about the domain. Facts are used to define the properties of the objects. Facts are defined using the following syntax:
+
+# Lists
+As its name suggests, a list is just a plain old list of items. Slightly more precisely, it is a finite sequence of elements. Here are some examples of lists in Prolog:
 
 ```prolog
-likes(mary, apple).
-likes(mary, pear).
-likes(john, pear).
-likes(john, mary).
+[mia, vincent, jules, yolanda]
+
+[mia, robber(honey_bunny), X, 2, mia]
+
+[]
+
+[mia, [vincent, jules], [butch, girlfriend(butch)]]
+
+[[], dead(z), [2, [b, c]], [], Z, [2, [b, c]]]
 ```
 
-In the above example, we have defined the likes facts. The first fact says that Mary likes apple, the second fact says that Mary likes pear, the third fact says that John likes pear, and the fourth fact says that John likes Mary.
+Prolog has a special built-in operator | which can be used to decompose a list into its head and tail. It is important to get to know how to use | , for it is a key tool for writing Prolog list manipulation programs.
 
-## Rules
-
-Rules are the statements that define the relationship between the objects. Rules are defined using the following syntax:
+The most obvious use of | is to extract information from lists. We do this by using | together with unification. For example, to get hold of the head and tail of [mia,vincent, jules,yolanda] we can pose the following query:
 
 ```prolog
-likes(john, X) :- likes(X, apple).
+[Head|Tail] = [mia, vincent, jules, yolanda].
+
+Head = mia
+Tail = [vincent,jules,yolanda]
+yes
 ```
 
-In the above example, we have defined the rule. The rule says that John likes X if X likes apple.
-
-## Queries
-
-Queries are the statements that ask the Prolog interpreter to find the solution. Queries are defined using the following syntax:
+Empty Lists have no Head and Tail:
 
 ```prolog
-likes(john, X).
+?- [X|Y] = [].
+
+no
 ```
 
-In the above example, we have defined the query. The query says that find the value of X such that John likes X.
+We can do a lot more with | ; it really is a flexible tool. For example, suppose we wanted to know what the first two elements of the list were, and also the remainder of the list after the second element. Then we’d pose the following query:
 
-Lets see this with an example. Create knowlage base into a file named kb1.pl and write the following code:
 ```prolog
-girl(priya).
-girl(tiyasha).
-girl(jaya).
-can_cook(priya).
+?- [X,Y | W] = [[], dead(z), [2, [b, c]], [], Z].
+
+X = []
+Y = dead(z)
+W = [[2,[b,c]],[],_8327]
+Z = _8327
+yes
 ```
 
-Now we can use this knowledge base by posing some queries. “Is priya a girl?”, it will reply “yes”, “is jamini a girl?” then it will answer “No”, because it does not know who jamini is. Our next question is “Can Priya cook?”, it will say “yes”, but if we ask the same question for Jaya, it will say “No”.
+That is, the head of the list is bound to X , the second element is bound to Y , and the remainder of the list after the second element is bound to W (that is, W is the list that remains when we take away the first two elements). So | can not only be used to split a list into its head and its tail, we can also use it to split a list at any point. To the left of | we simply indicate how many elements we want to take away from the front of the list, and then to right of the | we will get what remains.
 
-Compile the file and run the following queries:
 ```prolog
-consult('kb1.pl').
+?- [X1,X2,X3,X4 | Tail] =
+            [[], dead(z), [2, [b, c]], [], Z].
 
-girl(priya).
-
-can_cook(priya).
-
-can_cook(jaya).
-
+X1 = []
+X2 = dead(z)
+X3 = [2,[b,c]]
+X4 = []
+Tail = [_8910]
+Z = _8910
+yes
 ```
 
-Let us see another knowledge base, where we have some rules. Rules contain some information that are conditionally true about the domain of interest. Suppose our knowledge base is as follows:
-```prolog
-sing_a_song(ananya).
-listens_to_music(rohit).
+k, we have got the information we wanted: the values we are interested in are bound to the variables X2 and X4 . But we’ve got a lot of other information too (namely the values bound to X1 , X3 and Tail ). And perhaps we’re not interested in all this other stuff. If so, it’s a bit silly having to explicitly introduce variables X1 , X3 and Tail to deal with it. And in fact, there is a simpler way to obtain only the information we want: we can pose the following query instead:
 
-listens_to_music(ananya) :- sing_a_song(ananya).
-happy(ananya) :- sing_a_song(ananya).
-happy(rohit) :- listens_to_music(rohit).
-playes_guitar(rohit) :- listens_to_music(rohit).
+```prolog
+?- [_,X,_,Y|_] = [[], dead(z), [2, [b, c]], [], Z].
+
+X = dead(z)
+Y = []
+Z = _9593
+yes
 ```
 
-Now lets pose some queries to the knowledge base. Compile the file and run the following queries:
+Let’s look at one last example. The third element of our working example is a list (namely [2,  [b,  c]] ). Suppose we wanted to extract the tail of this internal list, and that we are not interested in any other information. How could we do this? As follows:
+
 ```prolog
-consult('kb2.pl').
+?- [_,_,[_|X]|_] =
+      [[], dead(z), [2, [b, c]], [], Z, [2, [b, c]]].
 
-happy(rohit).
-
-sing_a_song(rohit).
-
-sing_a_song(ananya).
-
-playes_guitar(rohit).
-
-playes_guitar(ananya).
-
-listens_to_music(ananya).
+X = [[b,c]]
+Z = _10087
+yes
 ```
 
-# Variables
-In Prolog, variables are used to represent the unknown values. Variables always start with uppercase, and are defined using the following syntax:
+# Recursion in Lists
+ One of the most basic things we would like to know is whether something is an element of a list or not. So let’s write a program that, when given as inputs an arbitrary object X and a list L , tells us whether or not X belongs to L . The program that does this is usually called member , and it is the simplest example of a Prolog program that exploits the recursive structure of lists. Here it is:
 
 ```prolog
-likes(john, X).
+member(X,[X|T]).
+member(X,[H|T]) :- member(X,T).
 ```
 
-Lets create a file named kb3.pl and write the following code:
-```prolog
-can_cook(priya).
-can_cook(jaya).
-can_cook(tiyasha).
+That’s all there is to it: one fact (namely member(X,\[X|T\]) ) and one rule (namely member(X,\[H|T\])  :-  member(X,T) ). But note that the rule is recursive (after all, the functor member occurs in both the rule’s head and body) and it is this that explains why such a short program is all that is required.
 
-likes(priya,jaya) :- can_cook(jaya).
-likes(priya,tiyasha) :- can_cook(tiyasha).
+# Exercises
+
+## Exercise 1
+How will prolog respond to the following queries?
+
+```prolog
+[a,b,c,d]  =  [a,[b,c,d]].
+[a,b,c,d]  =  [a|[b,c,d]].
+[a,b,c,d]  =  [a,b,[c,d]].
+[a,b,c,d]  =  [a,b|[c,d]].
+[a,b,c,d]  =  [a,b,c,[d]].
+[a,b,c,d]  =  [a,b,c|[d]].
+[a,b,c,d]  =  [a,b,c,d,[]].
+[a,b,c,d]  =  [a,b,c,d|[]].
+[]  =  _.
+[]  =  [_].
+[]  =  [_|[]].
 ```
 
-Now we can pose some queries to the knowledge base. Compile the file and run the following queries:
-```prolog
-consult('kb3.pl').
+## Exercise 2
+Write a predicate second(X,List) which checks whether X is the second element of List .
 
-can_cook(X).
+## Exercise 3
 
-likes(priya,X).
+Write a predicate swap12(List1,List2) which checks whether List1 is identical to List2 , except that the first two elements are exchanged.
+
+## Exercise 4
+ Suppose we are given a knowledge base with the following facts:
+
+ ```prolog
+tran(eins,one).
+tran(zwei,two).
+tran(drei,three).
+tran(vier,four).
+tran(fuenf,five).
+tran(sechs,six).
+tran(sieben,seven).
+tran(acht,eight).
+tran(neun,nine).
 ```
 
-On the above examples we have seen how to use variables in Prolog. In the first query, we have asked the Prolog interpreter to find the value of X such that X can cook. If we press enter, then it will come out, otherwise if we press semicolon (;), then it will show the next result.
-
-In the second query, we have asked the Prolog interpreter to find the value of X such that Priya likes X.
-
-# Relations
-In Prolog, relations are used to define the relationship between the objects. 
-
-Imagine that we want the concept of brothers. we can define it as follows:
-
-- They both are male.
-- They have the same parent.
+Write a predicate listtran(G,E) which translates a list of German number words to the corresponding list of English number words. For example:
 
 ```prolog
-parent(sudip, piyus).
-parent(sudip, raj).
-male(piyus).
-male(raj).
-brother(X,Y) :- parent(Z,X), parent(Z,Y),male(X), male(Y)
+listtran([eins,neun,zwei],X).
 ```
 
-Lets create a file named kb4.pl and write the following code:
+should give:
+
 ```prolog
-female(pam).
-female(liz).
-female(pat).
-female(ann).
-male(jim).
-male(bob).
-male(tom).
-male(peter).
-parent(pam,bob).
-parent(tom,bob).
-parent(tom,liz).
-parent(bob,ann).
-parent(bob,pat).
-parent(pat,jim).
-parent(bob,peter).
-parent(peter,jim).
-mother(X,Y):- parent(X,Y),female(X).
-father(X,Y):- parent(X,Y),male(X).
-haschild(X):- parent(X,_).
-sister(X,Y):- parent(Z,X),parent(Z,Y),female(X),X\==Y.
-brother(X,Y):-parent(Z,X),parent(Z,Y),male(X),X\==Y.
+X = [one,nine,two].
 ```
 
-now we can compile and query this family tree. Compile the file and run the following queries:
+Your program should also work in the other direction. For example, if you give it the query:
+
 ```prolog
-consult('kb4.pl').
-
-parent(X,jim).
-
-mother(X,Y).
-
-haschild(X).
-
-sister(X,Y).
-
-brother(X,Y).
+listtran(X,[one,seven,six,two]).
 ```
 
-Note that the symbol \== is used to denote not equal to.
-Note also that the underscore (_) is used to denote an anonymous variable, represents an argument whose specific value is irrelevant.
+it should return:
 
-for example in the above knowledge base, the query haschild(X) will return all the facts for parent X of someaone.
-
-Lets extend the knowledge base with the following code and create a file named kb5.pl:
 ```prolog
-female(pam).
-female(liz).
-female(pat).
-female(ann).
-
-male(jim).
-male(bob).
-male(tom).
-male(peter).
-
-parent(pam,bob).
-parent(tom,bob).
-parent(tom,liz).
-parent(bob,ann).
-
-parent(bob,pat).
-parent(pat,jim).
-parent(bob,peter).
-parent(peter,jim).
-
-mother(X,Y):- parent(X,Y),female(X).
-father(X,Y):-parent(X,Y),male(X).
-sister(X,Y):-parent(Z,X),parent(Z,Y),female(X),X\==Y.
-brother(X,Y):-parent(Z,X),parent(Z,Y),male(X),X\==Y.
-grandparent(X,Y):-parent(X,Z),parent(Z,Y).
-grandmother(X,Z):-mother(X,Y),parent(Y,Z).
-grandfather(X,Z):-father(X,Y),parent(Y,Z).
-wife(X,Y):-parent(X,Z),parent(Y,Z),female(X),male(Y).
-uncle(X,Z):-brother(X,Y),parent(Y,Z).
+X = [eins,sieben,sechs,zwei].
 ```
 
-Now he have relationships between grandparent, grandmother, grandfather, wife and uncle. Compile the file and run the following queries:
-```prolog
-consult('kb5.pl').
+## Exercise 5
+Write a predicate twice(In,Out) whose left argument is a list, and whose right argument is a list consisting of every element in the left list written twice. For example, the query:
 
-uncle(X,Y).
-grandparent(X,Y).
-wife(X,Y).
+```prolog
+twice([a,4,buggle],X).
 ```
 
-## Trace
-In Prolog, trace is used to show the execution of the program. It shows the execution of the program step by step. To enable the trace, use the following command:
+should return:
 
 ```prolog
-mother(X,Y).
+X = [a,a,4,4,buggle,buggle].
+```
+And the query
 
-trace.
+```prolog
+twice([1,2,1,1],X).
 ```
 
-When you run the above command, you will get the following output:
-```prolog
-[trace]  
-| ?- mother(pam,Y).
-   1 1 Call: mother(pam,_23) ?
-   2 2 Call: parent(pam,_23) ?
-   2 2 Exit: parent(pam,bob) ?
-   3 2 Call: female(pam) ?
-   3 2 Exit: female(pam) ?
-   1 1 Exit: mother(pam,bob) ?
+should return:
 
-Y = bob
-    
-(16 ms) yes
+```prolog
+X = [1,1,2,2,1,1,1,1].
 ```
 
-To disable the trace, use the following command:
+## Exercise 6
+Draw the search trees for the following three queries:
 
 ```prolog
-notrace.
-```
-
-## Recursion
-
-In Prolog, recursion is used to define the rules that call themselves. Recursion is used to solve the complex problems by dividing it into smaller problems. Let us see how to define the recursive rules in Prolog.
-
-for example:
-```prolog
-
-predecessor(X, Z) :- parent(X, Z).
-predecessor(X, Z) :- parent(X, Y),predecessor(Y, Z).
-```
-
-Lets create a new file named kb6.pl and write the following code:
-```prolog
-female(pam).
-female(liz).
-female(pat).
-female(ann).
-
-male(jim).
-male(bob).
-male(tom).
-male(peter).
-
-parent(pam,bob).
-parent(tom,bob).
-parent(tom,liz).
-parent(bob,ann).
-parent(bob,pat).
-parent(pat,jim).
-parent(bob,peter).
-parent(peter,jim).
-
-predecessor(X, Z) :- parent(X, Z).
-predecessor(X, Z) :- parent(X, Y),predecessor(Y, Z).
-```
-
-Lets compile the file and run the following queries and do some tracing:
-```prolog
-consult('kb7.pl').
-
-predecessor(peter,X).
-
-trace.
-```
-
-When you run the above command, you will get the following output:
-```prolog
-{trace}
-| ?- predecessor(bob,X).
-   1 1 Call: predecessor(bob,_23) ?
-   2 2 Call: parent(bob,_23) ?
-   2 2 Exit: parent(bob,ann) ?
-   1 1 Exit: predecessor(bob,ann) ?
-   
-X = ann ? ;
-   1 1 Redo: predecessor(bob,ann) ?
-   2 2 Redo: parent(bob,ann) ?
-   2 2 Exit: parent(bob,pat) ?
-   1 1 Exit: predecessor(bob,pat) ?
-   
-X = pat ? ;
-   1 1 Redo: predecessor(bob,pat) ?
-   2 2 Redo: parent(bob,pat) ?
-   2 2 Exit: parent(bob,peter) ?
-   1 1 Exit: predecessor(bob,peter) ?
-   
-X = peter ? ;
-   1 1 Redo: predecessor(bob,peter) ?
-   2 2 Call: parent(bob,_92) ?
-   2 2 Exit: parent(bob,ann) ?
-   3 2 Call: predecessor(ann,_23) ?
-   4 3 Call: parent(ann,_23) ?
-   4 3 Fail: parent(ann,_23) ?
-   4 3 Call: parent(ann,_141) ?
-   4 3 Fail: parent(ann,_129) ?
-   3 2 Fail: predecessor(ann,_23) ?
-   2 2 Redo: parent(bob,ann) ?
-   2 2 Exit: parent(bob,pat) ?
-   3 2 Call: predecessor(pat,_23) ?
-   4 3 Call: parent(pat,_23) ?
-   4 3 Exit: parent(pat,jim) ?
-   3 2 Exit: predecessor(pat,jim) ?
-   1 1 Exit: predecessor(bob,jim) ?
-   
-X = jim ? ;
-   1 1 Redo: predecessor(bob,jim) ?
-   3 2 Redo: predecessor(pat,jim) ?
-   4 3 Call: parent(pat,_141) ?
-   4 3 Exit: parent(pat,jim) ?
-   5 3 Call: predecessor(jim,_23) ?
-   6 4 Call: parent(jim,_23) ?
-   6 4 Fail: parent(jim,_23) ?
-   6 4 Call: parent(jim,_190) ?
-   6 4 Fail: parent(jim,_178) ?
-   5 3 Fail: predecessor(jim,_23) ?
-   3 2 Fail: predecessor(pat,_23) ?
-   2 2 Redo: parent(bob,pat) ?
-   2 2 Exit: parent(bob,peter) ?
-   3 2 Call: predecessor(peter,_23) ?
-   4 3 Call: parent(peter,_23) ?
-   4 3 Exit: parent(peter,jim) ?
-   3 2 Exit: predecessor(peter,jim) ?
-   1 1 Exit: predecessor(bob,jim) ?
-   
-X = jim ?
-
-(78 ms) yes
-
+member(a,[c,b,a,y]).
+member(x,[c,b,a,y]).
+member(a,[c,b,a,y,a]).
 ```
 
